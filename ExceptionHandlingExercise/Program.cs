@@ -8,6 +8,15 @@ namespace ExceptionHandlingExercise
     {
         static void Main(string[] args)
         {
+            var arr = new char[] {'1','2','3','4','5','6','a','b','c'};
+            var numbers = new List<int>();
+            string str1 = "" ;
+
+            //foreach (var item in arr)
+           // {
+              //  int.Parse(arr);
+           // }
+
             // -----------------------------------------------------------------------------
             // First create an char[], it must contain 6 numbers and 3 letters - name it arr
             // Create a list called numbers that will hold integers
@@ -18,6 +27,38 @@ namespace ExceptionHandlingExercise
             // Below we will set this up 
             // ------------------------------------------------------------------------------
 
+            foreach (var character in arr)
+            {
+                try
+                {
+                    str1 = character.ToString();
+                    int int1 = int.Parse(str1);
+                    numbers.Add(int1);
+                }
+                catch (IndexOutOfRangeException index)
+                {
+                    Console.WriteLine(index.Message);
+                }
+                catch (FormatException format)
+                {
+                    Console.WriteLine(format.Message);
+                }
+                catch (OverflowException overflow)
+                {
+                    Console.WriteLine(overflow.Message);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine($"Unable to Parse '{character}'");
+                }
+            }
+
+
+
+            foreach (var num in numbers)
+            {
+                Console.WriteLine(num);
+            }
 
 
             //TODO START HERE:
